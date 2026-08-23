@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
 import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-
+import Image from "next/image";
 
 
 
@@ -51,25 +51,25 @@ export default function KnowledgeCenter() {
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 h-auto justify-between w-full max-w-7xl:w-full mx-auto px-4 text-white lg:h-auto">
             <div className="bg-indigo-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="hdh" alt="" width={35} height={35} className="m-2 mt-2"/>
+                <img src="/images/frontend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Frontend</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
             </div>
             <div className="bg-green-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="jhj" alt="" width={35} height={35} className="m-2 mt-2"/>
+                <img src="/images/backend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Backend</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
             </div>
             <div className="bg-purple-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="hjh" alt="" width={35} height={35} className="m-2 mt-2"/>
+                <img src="/images/database.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
                   <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
@@ -78,45 +78,45 @@ export default function KnowledgeCenter() {
             </div>
             <div className="bg-yellow-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="jhj" alt="" width={40} height={40} className="m-2 mt-2"/>
+                <img src="/images/aiml.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">AI & ML</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
             </div>
             <div className="bg-indigo-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="hjh" alt="" width={40} height={40} className="m-2 mt-2"/>
+                <img src="/images/cloud.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Cloud Computin</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
             </div>
             <div className="bg-green-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="hjh" alt="" width={40} height={40} className="m-2 mt-2"/>
+                <img src="/images/devops.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">DevOps</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
             </div>
             <div className="bg-indigo-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="ish" alt="" width={40} height={40} className="m-2 mt-2"/>
+                <img src="/images/cyber-security.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Cyber Security</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
             </div>
             <div className="bg-red-50 h-12 w-45 mt-5 rounded-2xl">
               <div className="flex">
-                <img src="jdh" alt="" width={40} height={40} className="m-2 mt-2"/>
+                <img src="/images/interview-prep.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-mono text-[10px]">Interview Prep</h1>
                   <span className="text-gray-500 font-mono text-[9px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export function Recents(){
     
       <div className="w-md flex justify-between pl-2 pt-2 ">
         <div className="flex">
-          <img src="jgy" alt="" height={25} width={22} />
+          <img src="/images/file-text.png" alt="" height={25} width={22} />
           <p className="text-[10px] text-gray-800 font-mono font-semibold pl-1 pt-1">Understanding useState in React </p>
         </div>
 
