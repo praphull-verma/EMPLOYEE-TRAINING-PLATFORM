@@ -10,7 +10,7 @@ export function Side(){
         <>
             <div className="sidebar min-h-screen h-auto lg:max-h-181 lg:w-55 hidden lg:block bg-indigo-50 overflow-y-scroll lg:overflow-x-hidden ">
             <div className="head flex  h-20 flex-row pl-5 pt-5 gap-2 border-b border-b-indigo-200 lg:w-40">
-                    <img src="s" alt="" className="h-10 w-10 border border-white rounded-md" />
+                    <img src="/images/rsense.png" alt="" className="h-10 w-10 border border-white rounded-md" />
                     <div>
                         <div className="text-[14px] text-slate-900 font-sans font-bold m-0 p-0">Employee Learning</div>
                         <div className=" font-sans text-[12px] text-slate-900">& Knowledge Hub</div>

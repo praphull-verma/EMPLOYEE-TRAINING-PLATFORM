@@ -11,10 +11,10 @@
                     <div className="flex justify-between  w-100 h-12 mr-4">
                       <div className="flex-none m-0 w-15  ">
                         <img
-                          src="app/images/logo.png"
+                          src="/images/rsense.png"
                           alt=""
-                          width={10}
-                          height={10}
+                          width={45}
+                          height={45}
                          />
                       </div>
                       <div className=" w-83 ">
