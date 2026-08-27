@@ -25,7 +25,7 @@ const Dash = function Dashboard() {
 
   return (
     <>
-      <Right  />
+      <Right />
 
      
     </>

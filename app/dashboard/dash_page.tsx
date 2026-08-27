@@ -4,183 +4,268 @@ import {Admin} from "@/components/ui/admin"
 import Link from "next/link";
 import { Link2Off } from "lucide-react";
 
-
-export function Side(){
-    return(
-        <>
-            <div className="sidebar min-h-screen h-auto lg:max-h-181 lg:w-55 hidden lg:block bg-indigo-50 overflow-y-scroll lg:overflow-x-hidden ">
-            <div className="head flex  h-20 flex-row pl-5 pt-5 gap-2 border-b border-b-indigo-200 lg:w-40">
-                    <img src="/images/rsense.png" alt="" className="h-10 w-10 border border-white rounded-md" />
-                    <div>
-                        <div className="text-[14px] text-slate-900 font-sans font-bold m-0 p-0">Employee Learning</div>
-                        <div className=" font-sans text-[12px] text-slate-900">& Knowledge Hub</div>
-                    </div>
-                </div>
-
-                <nav className="nav pl-2.5 pt-3 pr-2.5 w-61 mb-25 ">
-                    <div className="nav_item h-[57.2px]  rounded-md mb-4.25">
-                        <p className="text-slate-900 text-[12px] font-bold ml-2.25 mr-2.25 mb-1.75">OVERVIEW</p>
-
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">DB</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Dashboard</span>
-                            </button>
-                        </div>
-                        
-                    </div>
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 
 
-                    <div className="nav_item h-[137.2px]  rounded-md mb-4.25">
-                        <p className="text-slate-900 text-[12px] font-bold ml-2.25 mr-2.25 mb-1.75">ADMINISTRATION</p>
 
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">UM</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">User Management</span>
-                            </button>
-                        </div>
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">RP</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Roles and Permissions</span>
-                            </button>
-                        </div>
+const menuSections = [
+  {
+    title: "OVERVIEW",
+    items: [
+      {
+        name: "Dashboard",
+        icon: "DB",
+        link: "/dashboard",
+      },
+    ],
+  },
 
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">OB</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">OnBoard</span>
-                            </button>
-                        </div>
-                        
-                    </div>
+  {
+    title: "ADMINISTRATION",
+    items: [
+      { name: "User Management", icon: "UM" },
+      { name: "Roles and Permissions", icon: "RP" },
+      { name: "OnBoard", icon: "OB" },
+    ],
+  },
+
+  {
+    title: "LEARNING",
+    items: [
+      { name: "Learning", icon: "LN" },
+      { name: "Learning Paths", icon: "LP" },
+      { name: "Assessments", icon: "AS" },
+      { name: "Skill Matrix", icon: "SM" },
+    ],
+  },
+
+  {
+    title: "KNOWLEDGE CENTER",
+    items: [
+      {
+        name: "Knowledge Center",
+        icon: "KC",
+        link: "/dashboard/knowledge-center",
+      },
+      {
+        name: "FAQs",
+        icon: "FQ",
+      },
+      {
+        name: "Documents and SOPs",
+        icon: "DS",
+      },
+      {
+        name: "Case Studies",
+        icon: "CS",
+      },
+      {
+        name: "Root Cause Analysis",
+        icon: "RC",
+      },
+      {
+        name: "Mistake Tracker",
+        icon: "MT",
+      },
+    ],
+  },
+
+  {
+    title: "INSIGHTS",
+    items: [
+      { name: "Reports and Analytics", icon: "RA" },
+      { name: "Notifications", icon: "NT" },
+      { name: "Settings", icon: "ST" },
+    ],
+  },
+];
+
+export function Side() {
+
+  // Stores all currently opened sections
+  const [openSections, setOpenSections] = useState<string[]>([
+    "KNOWLEDGE CENTER",
+  ]);
+
+  // Open / close individual dropdown
+  const toggleSection = (title: string) => {
+    setOpenSections((prev) =>
+      prev.includes(title)
+        ? prev.filter((section) => section !== title)
+        : [...prev, title]
+    );
+  };
+
+  return (
+    <div className="sidebar flex min-h-screen w-55 flex-col bg-indigo-50  overflow-y-scroll">
+
+      {/* ================= HEADER ================= */}
+
+      <div className="flex h-20 shrink-0 items-center gap-2 border-b border-indigo-200 px-5">
+
+        <img
+          src="/images/rsense.png"
+          alt=""
+          className="h-10 w-10 rounded-md border border-white"
+        />
+
+        <div>
+          <div className="text-[14px] font-bold text-slate-900">
+            Employee Learning
+          </div>
+
+          <div className="text-[12px] text-slate-900">
+            & Knowledge Hub
+          </div>
+        </div>
+
+      </div>
 
 
+      {/* ================= NAVIGATION ================= */}
 
-                    <div className="nav_item h-[177.2px]  rounded-md mb-4.25">
-                        <p className="text-slate-900 text-[12px] font-bold ml-2.25 mr-2.25 mb-1.75">LEARNING</p>
+      <nav className="w-full flex-1 overflow-y-auto overflow-x-hidden px-2.5 pt-3">
 
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">LN</span>
-                                <span className="text-slate-900 font-semibold text-[13px] pt-0.5 font-sans">Learning</span>
-                            </button>
-                        </div>
-                        
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">LP</span>
-                                <span className="text-slate-900 font-semibold text-[13px] pt-0.5 font-sans">Learning Paths</span>
-                            </button>
-                        </div>
-                        
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">AS</span>
-                                <span className="text-slate-900 font-semibold text-[13px] pt-0.5 font-sans">Assessments</span>
-                            </button>
-                        </div>
-                        
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">SM</span>
-                                <span className="text-slate-900 font-semibold text-[13px] pt-0.5 font-sans">Skill Matrix</span>
-                            </button>
-                        </div>
-                        
-                    </div>
+        {menuSections.map((section) => {
 
+          const isOpen = openSections.includes(section.title);
 
+          return (
+            <div
+              key={section.title}
+              className="mb-4 font-roboto"
+            >
 
-                    <div className="nav_item h-[257.2px]  rounded-md mb-4.25">
-                        <p className="text-slate-900 text-[12px] font-bold ml-2.25 mr-2.25 mb-1.75">KNOWLEDGE</p>
+              {/* Section Heading */}
+               
+              <div className="mb-1.5 flex w-full items-center justify-between">
 
-                        <div className="hover:bg-indigo-200">
-                            <Link href="/dashboard/knowledge-center" className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">KC</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Knowledge Center</span>
-                            </Link>
-                        </div>
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">FQ</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">FAQs</span>
-                            </button>
-                        </div>
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">Ds</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Documents and SOPs</span>
-                            </button>
-                        </div>
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">CS</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Case Studies</span>
-                            </button>
-                        </div>
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">RC</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Root Cause Analysis</span>
-                            </button>
-                        </div>
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">MT</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Mistake Tracker</span>
-                            </button>
-                        </div>
-                        
-                    </div>
+  {/* Title → navigates to page */}
+  <Link
+    href={
+      section.title === "OVERVIEW"
+        ? "/dashboard"
+        : section.title === "ADMINISTRATION"
+        ? "/dashboard/administration"
+        : section.title === "LEARNING"
+        ? "/dashboard/learning"
+        : section.title === "KNOWLEDGE CENTER"
+        ? "/dashboard/knowledge-center"
+        : "/dashboard/insights"
+    }
+    className="px-2.5 text-[12px] font-bold text-slate-900 hover:text-blue-600 font-roboto"
+  >
+    {section.title}
+  </Link>
+
+  {/* Arrow → opens/closes dropdown */}
+  <button
+    type="button"
+    onClick={() => toggleSection(section.title)}
+    className="p-1"
+  >
+    <ChevronDown
+      size={15}
+      className={`text-slate-700 transition-transform duration-200 ${
+        isOpen ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+</div>
 
 
+              {/* Dropdown Items */}
 
-                    <div className="nav_item h-[57.2px]  rounded-md mb-4.25">
-                        <p className="text-slate-900 text-[12px] font-bold ml-2.25 mr-2.25 mb-1.75">INSIGHTS</p>
+              <div
+                className={`overflow-hidden transition-all duration-200 ${
+                  isOpen
+                    ? "max-h-[500px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
 
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">RA</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Reports and Analytics</span>
-                            </button>
-                        </div>
-                        
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">NT</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Notifications</span>
-                            </button>
-                        </div>
-                        
-                        <div className="hover:bg-indigo-200">
-                            <button className="btn flex w-[190.8px] h-[40.8] pl-2.25 pr-2.25 pt-1.75 pb-1.75 gap-2">
-                                <span className="border border-indigo-200 h-6.25 w-6.25 text-slate-900 text-[10px] grid justify-center items-center rounded-sm">ST</span>
-                                <span className="text-slate-900 font-semibold text-[12px] pt-0.5 font-sans">Settings</span>
-                            </button>
-                        </div>
-                        
-                    </div>
-                </nav>
+                {section.items.map((item) => {
 
-                <div className="head flex  h-20 flex-row pl-5 pt-5 gap-2 border-b border-t-indigo-200 w-61">
-                    <span className="h-10 w-10 border border-indigo-200 rounded-md text-slate-900 p-2" >AD</span>
-                    <div>
-                        <div className="text-[14px] text-slate-900 font-sans font-bold m-0 p-0">Admin User</div>
-                        <div className=" font-sans text-[12px] text-slate-900">Admin role</div>
-                    </div>
-                </div>
+                  const content = (
+                    <>
+                      {/* Icon */}
 
-                
+                      <span className="grid h-6.25 w-6.25 shrink-0 place-items-center rounded-sm border border-indigo-200 text-[10px] text-slate-900">
+                        {item.icon}
+                      </span>
+
+                      {/* Name */}
+
+                      <span className="pt-0.5 text-[12px] font-semibold text-slate-900">
+                        {item.name}
+                      </span>
+                    </>
+                  );
+
+
+                  // If item has a link
+                  if (item.link) {
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.link}
+                        className="flex h-[40.8px] w-full items-center gap-2 rounded-md px-2.25 py-1.75 hover:bg-indigo-200"
+                      >
+                        {content}
+                      </Link>
+                    );
+                  }
+
+
+                  // Normal button
+                  return (
+                    <button
+                      key={item.name}
+                      type="button"
+                      className="flex h-[40.8px] w-full items-center gap-2 rounded-md px-2.25 py-1.75 hover:bg-indigo-200"
+                    >
+                      {content}
+                    </button>
+                  );
+
+                })}
+
+              </div>
 
             </div>
+          );
 
-        </>
-    );
+        })}
+
+      </nav>
+
+
+      {/* ================= ADMIN PROFILE ================= */}
+
+      <div className="mt-auto flex h-20 shrink-0 items-center gap-2 border-t border-indigo-200 px-5">
+
+        <span className="flex h-10 w-10 items-center justify-center rounded-md border border-indigo-200 text-slate-900">
+          AD
+        </span>
+
+        <div>
+          <div className="text-[14px] font-bold text-slate-900">
+            Admin User
+          </div>
+
+          <div className="text-[12px] text-slate-900">
+            Admin role
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  );
 }
-
 
 export  function Nav(){
         return(

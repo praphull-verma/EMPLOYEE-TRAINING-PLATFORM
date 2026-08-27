@@ -32,13 +32,13 @@ export default function Knowledge_Center(
 
   return (
     <>
-      <div className="main min-h-184 min-w-100 bg-slate-50 overflow-y-hidden flex">
+      <div className="main min-h-184 min-w-100 bg-slate-50 flex ">
         <Side />
 
         <div className="flex-1 w-full overflow-x-hidden">
           <Nav />
 
-          <main className="min-w-0 flex-1 bg-white">{children}</main>
+          <main className="min-w-0 flex-1 bg-white ">{children}</main>
           
         </div>
       </div>

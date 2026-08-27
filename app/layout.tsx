@@ -1,6 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono , Poppins, Inter, Outfit, Manrope} from "next/font/google";
 import "./globals.css";
+
+
+
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +43,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased ${inter.variable} ${outfit.variable} ${manrope.variable}`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
+
+      
+  
+
+  
+
     </html> 
   );
 }

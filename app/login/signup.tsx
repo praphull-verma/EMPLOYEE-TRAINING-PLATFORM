@@ -48,7 +48,7 @@ export function Signup(
                     <div className="signup h-130 w-110 border border-black rounded-xl p-10 shadow-sm shadow-gray-800">
                         
                         <div className="mb-3">
-                            <h1 className="text-black text-3xl font-bold">Welcome</h1>
+                            <h1 className="text-black text-3xl font-nunito font-bold">Welcome</h1>
                             <p className="text-gray-500">Sign up with your authorized organization account.</p>
                         </div>
 

@@ -23,25 +23,25 @@ import { useRouter } from "next/navigation";
                 <div className="w-full lg:w-1/2   bg-indigo-300 flex justify-center items-center px-6 py-2 pt-0 ">
                     <div className="w-full max-w-2xl px-2 mt-0 pt-0 pl-10 pr-8">
                         <p className=" pb-3 font-mono text-slate-900 font-semibold">Single source of truth</p>
-                        <h1 className=" pb-5 text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-black max-w-xl">Manage learning and knowledge in one place.</h1>
-                        <p className="text-base md:text-lg font-Roboto  text-slate-900 pb-5">A centralized hub for employee onboarding, continuous learning, assessments, skills and reusable organizational knowledge.</p>
+                        <h1 className=" pb-5 text-3xl md:text-4xl lg:text-5xl font-inter font-semibold text-black max-w-xl">Manage learning and knowledge in one place.</h1>
+                        <p className="text-base md:text-lg font-inter  text-slate-900 pb-5">A centralized hub for employee onboarding, continuous learning, assessments, skills and reusable organizational knowledge.</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-40 justify-between text-white">
                             <div className="bg-white w-full h-13 border border-black pl-4 pt-2 flex">
                                 <div className="h-8 w-8 border  border-black"></div>
-                                <span className="text-black pt-1 pl-2 font-sans font-bold ">Onboarding</span>
+                                <span className="text-slate-900 pt-1 pl-2 font-inter font-bold ">Onboarding</span>
                             </div>
                             <div className="bg-white w-full h-13 border border-black pl-4 pt-2 flex">
                                 <div className="h-8 w-8 border  border-black"></div>
-                                <span className="text-black pt-1 pl-2 font-sans font-bold">Learning</span>
+                                <span className="text-slate-900 pt-1 pl-2 font-inter font-bold">Learning</span>
                             </div>
                             <div className="bg-white w-full h-13 border border-black pl-4 pt-2 flex">
                                 <div className="h-8 w-8 border  border-black"></div>
-                                <span className="text-black pt-1 pl-2 font-sans font-bold">Assessments</span>
+                                <span className="text-slate-900 pt-1 pl-2 font-inter font-bold">Assessments</span>
                                 
                             </div>
                             <div className="bg-white w-full h-13 border border-black pl-4 pt-2 flex">
                                 <div className="h-8 w-8 border  border-black"></div>
-                                <span className="text-black pt-1 pl-2 font-sans font-bold">Knowledge Center</span>
+                                <span className="text-slate-900 pt-1 pl-2 font-inter font-bold">Knowledge Center</span>
                             </div>
 
                         </div>
@@ -88,8 +88,8 @@ export function Login({ goSignup, Forgot_Pass }: { goSignup: () => void, Forgot_
                     <div className="login h-auto w-full max-w-md border border-black rounded-xl p-10 shadow-sm shadow-gray-800">
                          
                         <div className="mb-3">
-                            <h1 className="text-black text-3xl font-bold">Welcome back</h1>
-                            <p className="text-gray-500">Sign in with your authorized organization account.</p>
+                            <h1 className="text-slate-950 text-3xl font-nunito font-bold">Welcome back</h1>
+                            <p className="text-gray-500 font-inter text-[14px]">Sign in with your authorized organization account.</p>
                         </div>
 
                         <div>
