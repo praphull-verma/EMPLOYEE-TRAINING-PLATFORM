@@ -53,7 +53,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/frontend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-bold pl-1 mt-2 font-roboto text-[13.5px] ">Frontend</h1>
+                  <h1 className="text-slate-700 font-bold pl-1 mt-2 font-roboto text-[13px] ">Frontend</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
@@ -62,7 +62,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/backend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13.5px]">Backend</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">Backend</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/database.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13.5px]">Database</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">Database</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/aiml.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13.5px]">AI & ML</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">AI & ML</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/cloud.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-bold pl-1 mt-2 font-roboto text-[13.5px]">Cloud Computing</h1>
+                  <h1 className="text-slate-700 font-bold pl-1 mt-2 font-roboto text-[13px]">Cloud Computing</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1 ">76+ recources</span>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/devops.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13.5px]">DevOps</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">DevOps</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function KnowledgeCenter() {
               <div className="flex">
                 <img src="/images/cyber-security.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
-                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13.5px]">Cyber Security</h1>
+                  <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">Cyber Security</h1>
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
