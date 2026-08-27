@@ -6,6 +6,7 @@ import { Link2Off } from "lucide-react";
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useUser } from "../hooks/userUser";
 
 
 
@@ -83,6 +84,8 @@ const menuSections = [
 ];
 
 export function Side() {
+
+  const name = useUser();
 
   // Stores all currently opened sections
   const [openSections, setOpenSections] = useState<string[]>([
@@ -253,7 +256,7 @@ export function Side() {
 
         <div>
           <div className="text-[14px] font-bold text-slate-900">
-            Admin User
+            {name}
           </div>
 
           <div className="text-[12px] text-slate-900">
@@ -268,6 +271,7 @@ export function Side() {
 }
 
 export  function Nav(){
+        const name = useUser();
         return(
              <>
                   <div className="Nav h-15 w-full lg:w-330 bg-white pt-4 pb-3 pl-12 pr-1 flex justify-between ml-0  ">
@@ -288,7 +292,7 @@ max-w-xltext-[13px] placeholder:p-1 placeholder:text-[13px] placeholder:text-sla
                     <div className="head flex  h-15 flex-row pl-3  gap-2   w-61">
                         <span className="h-8 w-8 border border-gray-600 rounded-3xl text-slate-900 pt-1.5 text-[12px] text-center font-bold " >AD</span>
                     <div>
-                        <div className="text-[12px] text-slate-900 font-sans font-bold m-0 p-0">Admin User</div>
+                        <div className="text-[12px] text-slate-900 font-sans font-bold m-0 p-0">{name}</div>
                         <div className=" font-sans text-[11px] text-slate-500">Content and Learning Admin</div>
                     </div>
 

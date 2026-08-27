@@ -1,14 +1,32 @@
 "use client"
 
+import { useEffect, useState } from "react";
+
 function Admin({})
     {
+
+        const [name, setName] = useState("Loading...");
+useEffect(() => {
+  fetch("http://localhost:3001/me", {
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      setName(data.name || data.email);
+    })
+    .catch((err) => {
+      console.log("me error:", err); 
+      setName("Guest");
+    });
+}, []);
+        
     return(
         <>
         <div className="flex justify-between  ">
              <div className="head flex  h-15 flex-row pl-1 gap-2   w-61 ">
                 <span className="h-10 w-10 border border-gray-600 rounded-3xl text-slate-900 pt-3 text-[11px] text-center font-bold " >AD</span>
                 <div>
-                    <div className="text-[13px] text-slate-900 font-sans font-bold m-0 p-0">Admin User</div>
+                    <div className="text-[13px] text-slate-900 font-sans font-bold m-0 p-0">{name}</div>
                     <div className=" font-sans text-[11px] text-slate-500">Content and Learning Admin</div>                   
                 </div>
 
