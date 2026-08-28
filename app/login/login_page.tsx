@@ -63,7 +63,7 @@ export function Login({ goSignup, Forgot_Pass }: { goSignup: () => void, Forgot_
     e.preventDefault();
     setError("");
 
-    const res = await fetch("http://localhost:3000/login", {
+    const res = await fetch("http://localhost:3001/login", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -73,8 +73,11 @@ export function Login({ goSignup, Forgot_Pass }: { goSignup: () => void, Forgot_
     const data = await res.json();
     if (!res.ok) {
       setError(data.error);
-      return;
+      console.log(data);
+      return data;
     }
+
+    
 
     // redirect here, e.g. router.push("/dashboard")
      router.push("/dashboard");

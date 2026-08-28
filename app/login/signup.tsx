@@ -53,7 +53,7 @@ export function Signup(
                         </div>
 
                         <div>
-                            <form action="dashboard" >
+                           <form onSubmit={handleSubmit}>
                                 <p className="text-black font-bold pb-2 text-sm">Full Name</p>
                                 <input type="text" placeholder="Enter name" className="border border-gray-500 h-10 w-90 rounded-lg text-black placeholder:text-gray-500 pl-2 mb-3 placeholder:text-[16px] "value={name} onChange={(e)=>setName(e.target.value)} />
 
@@ -65,7 +65,7 @@ export function Signup(
                                 <input type="password" placeholder="Enter your password" value={password} onChange={(e)=>setPassword(e.target.value)} className="border border-gray-500 h-10 w-90 rounded-lg text-black placeholder:text-gray-500 pl-2 mb-3 placeholder:text-[16px]"  />
                                 
 
-                                <button type="submit" onSubmit={handleSubmit} className="mt-5 mb-5 border border-black w-90 h-12 rounded-lg bg-indigo-800 font-bold text-white cursor-pointer">Sign up</button>
+                                <button type="submit" className="mt-5 mb-5 border border-black w-90 h-12 rounded-lg bg-indigo-800 font-bold text-white cursor-pointer">Sign up</button>
                             </form>
 
                             <div className="w-90 border-b border-gray-400 mb-5"></div>
