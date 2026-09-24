@@ -6,9 +6,12 @@ import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import Image from "next/image";
 
+import {useRouter} from "next/navigation"
 
 
 export default function KnowledgeCenter() {
+
+  const router = useRouter();
   return (
     <>
     <div className="flex">
@@ -113,7 +116,10 @@ export default function KnowledgeCenter() {
               </div>
             </div>
             <div className="h-12 w-45 mt-5 ">
-               <button className="text-[12px] text-black bg-mist-200 h-12 w-45  rounded-xl cursor-pointer font-semibold font-roboto">+ Add Category
+               <button className="text-[12px] text-black bg-mist-200 h-12 w-45  rounded-xl cursor-pointer font-semibold  
+                font-roboto"  onClick={() =>
+                router.push("/dashboard/knowledge-center/add-category")
+                }>+ Add Category
                 </button>
             </div>
             

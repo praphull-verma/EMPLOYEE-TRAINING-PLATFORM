@@ -26,18 +26,18 @@ export function Signup(
     e.preventDefault();
     setError("");
 
-    const res = await fetch("http://localhost:3001/signup", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name ,email, password }),
-    });
+    // const res = await fetch("http://localhost:3001/signup", {
+    //   method: "POST",
+    //   credentials: "include",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ name ,email, password }),
+    // });
 
-    const data = await res.json();
-    if (!res.ok) {
-      setError(data.error);
-      return;
-    }
+    // const data = await res.json();
+    // if (!res.ok) {
+    //   setError(data.error);
+    //   return;
+    // }
 
     // redirect here, e.g. router.push("/dashboard")
      router.push("/dashboard");

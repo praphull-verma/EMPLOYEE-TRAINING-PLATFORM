@@ -1,0 +1,494 @@
+"use client";
+
+import { useRef, useState } from "react";
+import Image from "next/image";
+import {
+  ArrowLeft,
+  Check,
+  Edit3,
+  ImagePlus,
+  Pencil,
+  Plus,
+  Trash2,
+  Upload,
+  X,
+} from "lucide-react";
+
+type Category = {
+  id: number;
+  name: string;
+  resources: number;
+  image: string;
+};
+
+const initialCategories: Category[] = [
+  {
+    id: 1,
+    name: "Frontend",
+    resources: 76,
+    image: "/images/frontend.png",
+  },
+  {
+    id: 2,
+    name: "Backend",
+    resources: 76,
+    image: "/images/backend.png",
+  },
+  {
+    id: 3,
+    name: "Database",
+    resources: 76,
+    image: "/images/database.png",
+  },
+  {
+    id: 4,
+    name: "AI & ML",
+    resources: 76,
+    image: "/images/aiml.png",
+  },
+  {
+    id: 5,
+    name: "Cloud Computing",
+    resources: 76,
+    image: "/images/cloud.png",
+  },
+  {
+    id: 6,
+    name: "DevOps",
+    resources: 76,
+    image: "/images/devops.png",
+  },
+  {
+    id: 7,
+    name: "Cyber Security",
+    resources: 76,
+    image: "/images/cyber-security.png",
+  },
+];
+
+export default function AddCategoryPage() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  
+
+  const [categories, setCategories] =
+    useState<Category[]>(initialCategories);
+
+  const [categoryName, setCategoryName] = useState("");
+  const [resourceCount, setResourceCount] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
+
+  const isEditing = editingId !== null;
+
+  const resetForm = () => {
+    setCategoryName("");
+    setResourceCount("");
+    setImagePreview("");
+    setImageFile(null);
+    setEditingId(null);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const handleImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  const handleSubmit = () => {
+    if (!categoryName.trim() || !resourceCount) return;
+
+    if (isEditing) {
+      setCategories((prev) =>
+        prev.map((category) =>
+          category.id === editingId
+            ? {
+                ...category,
+                name: categoryName.trim(),
+                resources: Number(resourceCount),
+                image: imagePreview || category.image,
+              }
+            : category
+        )
+      );
+    } else {
+      const newCategory: Category = {
+        id: Date.now(),
+        name: categoryName.trim(),
+        resources: Number(resourceCount),
+        image: imagePreview || "/images/frontend.png",
+      };
+
+      setCategories((prev) => [...prev, newCategory]);
+    }
+
+    resetForm();
+  };
+
+  const handleEdit = (category: Category) => {
+    setEditingId(category.id);
+    setCategoryName(category.name);
+    setResourceCount(String(category.resources));
+    setImagePreview(category.image);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleDelete = () => {
+    if (deleteId === null) return;
+
+    setCategories((prev) =>
+      prev.filter((category) => category.id !== deleteId)
+    );
+
+    if (editingId === deleteId) {
+      resetForm();
+    }
+
+    setDeleteId(null);
+  };
+
+  return (
+    <div className="min-h-screen bg-white px-5 py-5 font-roboto md:px-7 lg:px-8">
+      
+      {/* HEADER */}
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <div className="mb-2 flex items-center gap-2">
+            <button
+              onClick={() => window.history.back()}
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-indigo-100 bg-white text-slate-600 transition hover:bg-indigo-50 hover:text-blue-600"
+            >
+              <ArrowLeft size={15} />
+            </button>
+
+            <span className="text-[11px] font-semibold text-blue-600">
+              KNOWLEDGE CENTER
+            </span>
+          </div>
+
+          <h1 className="text-2xl font-semibold text-slate-800">
+            Add Categories
+          </h1>
+
+          <p className="mt-1 text-[13px] text-gray-500">
+            Create and manage knowledge center categories.
+          </p>
+        </div>
+
+        <div className="flex h-10 items-center gap-2 rounded-xl bg-indigo-50 px-4">
+          <ImagePlus size={16} className="text-blue-600" />
+
+          <span className="text-[12px] font-semibold text-slate-700">
+            {categories.length} Categories
+          </span>
+        </div>
+      </div>
+
+      {/* FORM CARD */}
+      <div className="mb-7 rounded-2xl border border-indigo-100 bg-indigo-50/60 p-5 md:p-6">
+        <div className="mb-5">
+          <h2 className="text-[16px] font-semibold text-slate-800">
+            {isEditing ? "Edit Category" : "Create New Category"}
+          </h2>
+
+          <p className="mt-1 text-[12px] text-gray-500">
+            {isEditing
+              ? "Update the category information below."
+              : "Add a new category to your Knowledge Center."}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_260px]">
+          
+          {/* LEFT FORM */}
+          <div className="space-y-5">
+            
+            {/* CATEGORY NAME */}
+            <div>
+              <label className="mb-2 block text-[12px] font-semibold text-slate-700">
+                Category Name
+              </label>
+
+              <input
+                type="text"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+                placeholder="e.g. Frontend Development"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-[13px] text-slate-700 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+              />
+            </div>
+
+            {/* RESOURCE COUNT */}
+            <div>
+              <label className="mb-2 block text-[12px] font-semibold text-slate-700">
+                Number of Resources
+              </label>
+
+              <input
+                type="number"
+                min="0"
+                value={resourceCount}
+                onChange={(e) => setResourceCount(e.target.value)}
+                placeholder="e.g. 76"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-[13px] text-slate-700 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+              />
+
+              <p className="mt-1.5 text-[10px] text-gray-400">
+                Enter the current number of resources available.
+              </p>
+            </div>
+
+            {/* IMAGE */}
+            <div>
+              <label className="mb-2 block text-[12px] font-semibold text-slate-700">
+                Category Image
+              </label>
+
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+              />
+
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="flex h-24 w-full items-center justify-center gap-3 rounded-xl border border-dashed border-indigo-200 bg-white text-gray-500 transition hover:border-blue-400 hover:bg-indigo-50"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-blue-600">
+                  <Upload size={17} />
+                </div>
+
+                <div className="text-left">
+                  <p className="text-[12px] font-semibold text-slate-700">
+                    Upload category image
+                  </p>
+
+                  <p className="mt-1 text-[10px] text-gray-400">
+                    PNG, JPG or WEBP
+                  </p>
+                </div>
+              </button>
+            </div>
+
+            {/* BUTTONS */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={
+                  !categoryName.trim() || !resourceCount
+                }
+                className="flex h-10 items-center gap-2 rounded-xl bg-blue-600 px-5 text-[12px] font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isEditing ? (
+                  <>
+                    <Check size={15} />
+                    Save Changes
+                  </>
+                ) : (
+                  <>
+                    <Plus size={15} />
+                    Add Category
+                  </>
+                )}
+              </button>
+
+              {isEditing && (
+                <button
+                  type="button"
+                  onClick={resetForm}
+                  className="flex h-10 items-center gap-2 rounded-xl border border-gray-200 bg-white px-5 text-[12px] font-semibold text-slate-600 transition hover:bg-gray-50"
+                >
+                  <X size={15} />
+                  Cancel
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* IMAGE PREVIEW */}
+          <div className="rounded-2xl border border-indigo-100 bg-white p-4">
+            <p className="mb-3 text-[11px] font-semibold text-slate-700">
+              Image Preview
+            </p>
+
+            <div className="flex min-h-[190px] items-center justify-center rounded-xl bg-indigo-50">
+              {imagePreview ? (
+                <div className="relative h-28 w-28 overflow-hidden rounded-2xl bg-white p-3 shadow-sm">
+                  <Image
+                    src={imagePreview}
+                    alt="Category preview"
+                    fill
+                    className="object-contain p-3"
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <div className="text-center">
+                  <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-gray-400">
+                    <ImagePlus size={20} />
+                  </div>
+
+                  <p className="text-[11px] font-medium text-gray-500">
+                    No image selected
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {imageFile && (
+              <p className="mt-3 truncate text-[10px] text-gray-400">
+                {imageFile.name}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* EXISTING CATEGORIES */}
+      <div>
+        <div className="mb-4 flex items-center justify-between">
+          <div>
+            <h2 className="text-[16px] font-semibold text-slate-800">
+              Existing Categories
+            </h2>
+
+            <p className="mt-1 text-[11px] text-gray-500">
+              Edit or remove categories already available.
+            </p>
+          </div>
+
+          <span className="hidden rounded-full bg-indigo-50 px-3 py-1 text-[10px] font-semibold text-indigo-600 sm:block">
+            {categories.length} total
+          </span>
+        </div>
+
+        {categories.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-gray-200 py-14 text-center">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-400">
+              <ImagePlus size={20} />
+            </div>
+
+            <p className="text-[13px] font-semibold text-slate-700">
+              No categories available
+            </p>
+
+            <p className="mt-1 text-[11px] text-gray-400">
+              Create your first category above.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {categories.map((category) => (
+              <div
+                key={category.id}
+                className="group flex items-center justify-between rounded-2xl border border-gray-100 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-100 hover:shadow-md"
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-50 p-2">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      width={40}
+                      height={40}
+                      className="h-9 w-9 object-contain"
+                      unoptimized
+                    />
+                  </div>
+
+                  <div className="min-w-0">
+                    <h3 className="truncate text-[13px] font-semibold text-slate-700">
+                      {category.name}
+                    </h3>
+
+                    <p className="mt-1 text-[11px] font-medium text-gray-400">
+                      {category.resources}+ resources
+                    </p>
+                  </div>
+                </div>
+
+                <div className="ml-2 flex shrink-0 gap-1">
+                  <button
+                    type="button"
+                    onClick={() => handleEdit(category)}
+                    title="Edit category"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition hover:bg-indigo-50 hover:text-blue-600"
+                  >
+                    <Pencil size={14} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setDeleteId(category.id)}
+                    title="Remove category"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition hover:bg-red-50 hover:text-red-500"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* DELETE CONFIRMATION */}
+      {deleteId !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4 backdrop-blur-[2px]">
+          <div className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-xl">
+            
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-500">
+              <Trash2 size={18} />
+            </div>
+
+            <h3 className="text-[15px] font-semibold text-slate-800">
+              Remove category?
+            </h3>
+
+            <p className="mt-1.5 text-[12px] leading-5 text-gray-500">
+              This category will be removed from the list. You can add
+              it again later.
+            </p>
+
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setDeleteId(null)}
+                className="h-9 rounded-lg border border-gray-200 px-4 text-[11px] font-semibold text-gray-600 hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="h-9 rounded-lg bg-red-500 px-4 text-[11px] font-semibold text-white hover:bg-red-600"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
