@@ -5,6 +5,7 @@ import { ButtonGroup } from "@/components/ui/button-group"
 import { Field, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import Image from "next/image";
+import Link from "next/link";
 
 import {useRouter} from "next/navigation"
 
@@ -48,7 +49,11 @@ export default function KnowledgeCenter() {
         <div className="ml-5 mt-2 lg:w-235  lg:h-50 mr-5  p-4 rounded-2xl">
           <div className="flex justify-between">
             <h1 className="font-semibold font-roboto">Explore by Category</h1>
-            <span className="text-[10px] text-blue-700 font-bold font-dmserif mt-1">View all</span>
+
+            <Link  href="/dashboard/knowledge-center/categories" className="cursor-pointer">
+            <div className="text-[10px] text-blue-700 font-bold font-dmserif mt-1 ">View all</div>
+            
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 h-auto justify-between w-full max-w-7xl:w-full mx-auto px-4 text-white lg:h-auto">
@@ -130,7 +135,13 @@ export default function KnowledgeCenter() {
           <div className="bg-white h-55 w-md mt-1 rounded-xl border shadow shadow-gray-200">
              <div className="flex justify-between p-2 mb-1">
             <h1 className="font-semibold font-roboto">Recently added</h1>
-            <span className="text-[12px] text-blue-700 font-bold font-roboto mt-1">View all</span>
+                <Link
+                 href="/dashboard/knowledge-center/recently-added"
+                >
+                  <span className="text-[12px] text-blue-700 font-bold font-roboto mt-1 cursor-pointer">View all</span>
+                
+                </Link>
+
           </div>
            <Recents />
            <Recents />
