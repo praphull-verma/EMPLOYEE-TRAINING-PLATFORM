@@ -201,7 +201,10 @@ export default function AddCategoryPage() {
       </div>
 
       {/* FORM CARD */}
+
+
       <div className="mb-7 rounded-2xl border border-indigo-100 bg-indigo-50/60 p-5 md:p-6">
+      <form action="">
         <div className="mb-5">
           <h2 className="text-[16px] font-semibold text-slate-800">
             {isEditing ? "Edit Category" : "Create New Category"}
@@ -362,7 +365,11 @@ export default function AddCategoryPage() {
             )}
           </div>
         </div>
+
+        </form>
       </div>
+
+    
 
       {/* EXISTING CATEGORIES */}
       <div>

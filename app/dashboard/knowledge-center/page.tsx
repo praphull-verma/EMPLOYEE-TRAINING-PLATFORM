@@ -57,7 +57,91 @@ export default function KnowledgeCenter() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 h-auto justify-between w-full max-w-7xl:w-full mx-auto px-4 text-white lg:h-auto">
-            <div className="bg-indigo-50 h-14 w-45 mt-5 rounded-2xl">
+
+            <Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-indigo-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/frontend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-bold pl-1 mt-2 font-roboto text-[13px] ">Frontend</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-green-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/backend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">Backend</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-purple-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/database.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">Database</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-yellow-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/aiml.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">AI & ML</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-indigo-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/cloud.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-bold pl-1 mt-2 font-roboto text-[13px]">Cloud Computing</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-green-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/devops.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">DevOps</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+
+<Link href="/dashboard/knowledge-center/categories/resources">
+  <div className="bg-indigo-50 h-14 w-45 mt-5 rounded-2xl">
+    <div className="flex">
+      <img src="/images/cyber-security.png" alt="" width={40} height={40} className="m-2 mt-2"/>
+      <div>
+        <h1 className="text-slate-700 font-semibold pl-1 mt-2 font-roboto text-[13px]">Cyber Security</h1>
+        <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
+      </div>
+    </div>
+  </div>
+</Link>
+            {/* <div className="bg-indigo-50 h-14 w-45 mt-5 rounded-2xl">
               <div className="flex">
                 <img src="/images/frontend.png" alt="" width={40} height={40} className="m-2 mt-2"/>
                 <div>
@@ -119,7 +203,7 @@ export default function KnowledgeCenter() {
                   <span className="text-gray-500 font-dmserif text-[12px] font-semibold pl-1">76+ recources</span>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="h-12 w-45 mt-5 ">
                <button className="text-[12px] text-black bg-mist-200 h-12 w-45  rounded-xl cursor-pointer font-semibold  
                 font-roboto"  onClick={() =>
